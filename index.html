@@ -409,6 +409,25 @@
     .closebtn:hover {
         color: black;
     }
+    @media only screen and (max-width: 600px) {
+      .divv {
+        width: 90%; /* Adjust width for smaller screens */
+      }
+      .card {
+        width: 90%; /* Adjust card width for smaller screens */
+      }
+      .btn {
+        margin: 1rem 0; /* Adjust margin for smaller screens */
+        width: 100%; /* Make buttons full-width on smaller screens */
+      }
+      .field {
+        flex-direction: column; /* Stack input fields vertically on smaller screens */
+        gap: 0.5em; /* Reduce gap between input fields */
+      }
+      .input-field {
+        width: 100%; /* Make input fields full-width */
+      }
+    }
 
 
   </style>
