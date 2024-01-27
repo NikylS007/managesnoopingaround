@@ -514,6 +514,7 @@
                     }, 2000);
             } else {
                 // Show error message
+		document.getElementById('loader').classList.add('hidden');
 		document.getElementById('myDiv').style.display = 'flex'
                 document.getElementById('errorMessage').innerText = data.message;
                 document.getElementById('errorAlert').style.display = 'block';
