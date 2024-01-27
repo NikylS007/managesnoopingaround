@@ -493,6 +493,7 @@
             document.getElementById('errorAlert').style.display = 'block';
             return;
         }
+	document.getElementById('loader').classList.remove('hidden');
 
         // Send POST request to Flask backend
         fetch('https://restapicheckerapi-production.up.railway.app/login', {
@@ -510,7 +511,6 @@
 
                 document.getElementById('errorAlert').style.display = 'none';
                 document.getElementById('myDiv').style.display = 'none'
-                document.getElementById('loader').classList.remove('hidden');
                 setTimeout(function() {
                         window.location.href = 'https://restapicheckerapi-production.up.railway.app/home';
                     }, 2000);
