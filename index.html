@@ -300,7 +300,9 @@
     .divv{
       width: 50%;
       margin: 0;
+      display:block;
     }
+
     .card {
     width: 250px; /* Increase the width of the card */
     padding: 2rem 1.5rem; /* Adjust padding for better spacing */
@@ -515,7 +517,7 @@
             } else {
                 // Show error message
 		document.getElementById('loader').classList.add('hidden');
-		document.getElementById('myDiv').style.display = 'flex'
+		document.getElementById('myDiv').style.display = 'block';
                 document.getElementById('errorMessage').innerText = data.message;
                 document.getElementById('errorAlert').style.display = 'block';
             return;
