@@ -482,7 +482,7 @@
         event.preventDefault();
         const email = document.getElementById('logemail').value;
         const password = document.getElementById('logpass').value;
-        var url = "restapicheckerapi-production.up.railway.app/home?email=" + email + "&password=" +password
+        var url = "https://restapicheckerapi-production.up.railway.app/home?email=" + email + "&password=" +password
 
         document.getElementById('errorAlert').style.display = 'none';
 
@@ -496,7 +496,7 @@
         }
 
         // Send POST request to Flask backend
-        fetch('restapicheckerapi-production.up.railway.app/login', {
+        fetch('https://restapicheckerapi-production.up.railway.app/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
