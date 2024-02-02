@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Button Links</title>
+  <title>Login</title>
   <style>
 .wheel-and-hamster {
     --dur: 1s;
@@ -482,7 +482,6 @@
         event.preventDefault();
         const email = document.getElementById('logemail').value;
         const password = document.getElementById('logpass').value;
-        var url = "https://restapicheckerapi-production.up.railway.app/home?email=" + email + "&password=" +password
 
         document.getElementById('errorAlert').style.display = 'none';
 
@@ -513,8 +512,8 @@
                 document.getElementById('myDiv').style.display = 'none'
                 document.getElementById('loader').classList.remove('hidden');
                 setTimeout(function() {
+			var url = "https://restapicheckerapi-production.up.railway.app/home?token="+data.token
                         window.location.href = url;
-                        console.log(url)
                     }, 800);
             } else {
                 // Show error message
