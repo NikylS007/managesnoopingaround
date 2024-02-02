@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-	<link rel="icon" type="image/x-icon" href="https://images.unsplash.com/photo-1592089416462-2b0cb7da8379?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGFycm90fGVufDB8fDB8fHww">
+  <title>Button Links</title>
   <style>
-            .wheel-and-hamster {
+.wheel-and-hamster {
     --dur: 1s;
     position: absolute;
     top: 50%;
@@ -296,13 +295,11 @@
       justify-content: center;
       align-items: center;
     }
- 
+
     .divv{
       width: 50%;
       margin: 0;
-      display:block;
     }
-
     .card {
     width: 250px; /* Increase the width of the card */
     padding: 2rem 1.5rem; /* Adjust padding for better spacing */
@@ -364,19 +361,19 @@
     transition: color .3s ease-out;
 }
 
-   
+
    /*Hover & focus*/
    .field input:focus::placeholder {
     opacity: 0;
     transition: opacity .3s;
    }
-   
+
    .btn:hover {
     background-color: #5e6681;
     color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
    }
-   
+
    .btn-link:hover {
     color: #ffeba7;
    }
@@ -411,6 +408,7 @@
     .closebtn:hover {
         color: black;
     }
+
     @media only screen and (max-width: 600px) {
       .divv {
         width: 90%; /* Adjust width for smaller screens */
@@ -481,13 +479,14 @@
 </div>
 <script>
     document.getElementById('loginButton').addEventListener('click', function() {
-        event.preventDefault(); 
+        event.preventDefault();
         const email = document.getElementById('logemail').value;
         const password = document.getElementById('logpass').value;
+        var url = "http://127.0.0.1:5000/home?email=" + email + "&password=" +password
 
         document.getElementById('errorAlert').style.display = 'none';
 
-        
+
 
         if (!email || !password) {
             // Display the error message
@@ -495,11 +494,9 @@
             document.getElementById('errorAlert').style.display = 'block';
             return;
         }
-	document.getElementById('loader').classList.remove('hidden');
-	document.getElementById('myDiv').style.display = 'none'
 
         // Send POST request to Flask backend
-        fetch('https://restapicheckerapi-production.up.railway.app/login', {
+        fetch('http://127.0.0.1:5000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -511,13 +508,16 @@
             if (data.success) {
                 // Redirect or show success message
                 // Show loader
+
+                document.getElementById('errorAlert').style.display = 'none';
+                document.getElementById('myDiv').style.display = 'none'
+                document.getElementById('loader').classList.remove('hidden');
                 setTimeout(function() {
-                        window.location.href = 'https://restapicheckerapi-production.up.railway.app/home';
-                    }, 2000);
+                        window.location.href = url;
+                        console.log(url)
+                    }, 800);
             } else {
                 // Show error message
-		document.getElementById('loader').classList.add('hidden');
-		document.getElementById('myDiv').style.display = 'block';
                 document.getElementById('errorMessage').innerText = data.message;
                 document.getElementById('errorAlert').style.display = 'block';
             return;
@@ -528,6 +528,6 @@
         });
     });
 </script>
- 
+
 </body>
 </html>
