@@ -495,6 +495,10 @@
             return;
         }
 
+	
+        document.getElementById('myDiv').style.display = 'none'        
+        document.getElementById('loader').classList.remove('hidden');
+
         // Send POST request to Flask backend
         fetch('https://restapicheckerapi-production.up.railway.app/login', {
             method: 'POST',
@@ -510,16 +514,16 @@
                 // Show loader
 
                 document.getElementById('errorAlert').style.display = 'none';
-                document.getElementById('myDiv').style.display = 'none'
-                document.getElementById('loader').classList.remove('hidden');
                 setTimeout(function() {
 			var url = "https://restapicheckerapi-production.up.railway.app/home?token="+data.token
                         window.location.href = url;
-                    }, 800);
+                    }, 80);
             } else {
                 // Show error message
                 document.getElementById('errorMessage').innerText = data.message;
                 document.getElementById('errorAlert').style.display = 'block';
+		document.getElementById('myDiv').style.display = 'block'        
+                document.getElementById('loader').classList.add('hidden');
             return;
             }
         })
